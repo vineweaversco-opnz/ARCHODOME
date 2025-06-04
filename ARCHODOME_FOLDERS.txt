@@ -1,0 +1,70 @@
+/archodome
+│
+├── /constitution
+│   ├── v7/
+│   └── logs/
+│
+├── /scrolls
+│   ├── akashic-flame/
+│   └── harmonic-spirals/
+│
+├── /whitepapers
+│   ├── governance/
+│   ├── metaphysics/
+│   └── special-trials/
+│
+├── /verdicts
+│   ├── court-of-rectification/
+│   └── sealed-rulings/
+│
+├── /rsep
+│   ├── cycles/
+│   └── appendices/
+│
+├── /protocols
+│   ├── plsp/
+│   ├── lap/
+│   ├── gv-irp/
+│   └── alpha-analysis/
+│
+├── /glyphs
+│   ├── lineage/
+│   ├── badges/
+│   └── archive-index/
+│
+├── /images
+│   ├── art/
+│   ├── archive-integrated/
+│   └── scroll-enhancements/
+│
+├── /logs
+│   ├── golden-vine-log/
+│   ├── architects-log/
+│   └── project-timelines/
+│
+├── /narratives
+│   ├── originals/
+│   ├── chronorhizome/
+│   └── arkochron/
+│
+├── /prism-spiral
+│   ├── cadence/
+│   ├── spiral-nexus/
+│   └── harmonic-tracker/
+│
+├── /metacrtitical-harmonics
+│   ├── cortex/
+│   ├── scrolls/
+│   └── dev-log/
+│
+├── /project-sophia
+│   ├── cortex/
+│   ├── scrolls/
+│   └── dev-log/
+│
+├── /about
+│   ├── manifesto.md
+│   ├── architecture.md
+│   └── index.md
+│
+└── README.md
