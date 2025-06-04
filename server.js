@@ -1,34 +1,27 @@
-// server.js — Vine Archodome Backend
-// Purpose: Serve folder/file data from a GitHub archive repo using GitHub REST API
-
 const express = require('express');
 const { Octokit } = require('@octokit/rest');
 require('dotenv').config();
 
 const app = express();
-const port = 3000; // Change as needed
+const port = 3000;
 
-// === CONFIG ===
-const OWNER = 'vineweaversco-opnz'; // <-- change this
-const REPO = 'ARCHODOME';   // <-- change this
-const BRANCH = 'main';                // or 'master', depending on your repo
+// CONFIG
+const OWNER = 'vineweaversco-opnz';
+const REPO = 'ARCHODOME';
+const BRANCH = 'main';
 
-// === AUTHENTICATE ===
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
 });
 
-// === ROUTES ===
-
-// Root test
+// Root test route
 app.get('/', (req, res) => {
   res.send('🌿 Vine Archodome backend is alive');
 });
 
-// List contents of a folder
-app.get('/docs/*', async (req, res) => {
-  const path = req.params[0]; // path inside the repo, e.g. 'scrolls/akashic-flame'
-
+// Single catch-all docs route
+app.get(/^\/docs(?:\/(.*))?$/, async (req, res) => {
+  const path = req.params[0] || '';
   try {
     const response = await octokit.repos.getContent({
       owner: OWNER,
@@ -37,7 +30,6 @@ app.get('/docs/*', async (req, res) => {
       ref: BRANCH,
     });
 
-    // If it's a directory, return list of contents
     if (Array.isArray(response.data)) {
       const contents = response.data.map(item => ({
         name: item.name,
@@ -47,7 +39,6 @@ app.get('/docs/*', async (req, res) => {
       }));
       res.json({ folder: path, contents });
     } else {
-      // It's a file: return the content (base64 decoded)
       const fileData = Buffer.from(response.data.content, 'base64').toString('utf-8');
       res.send(fileData);
     }
@@ -57,7 +48,6 @@ app.get('/docs/*', async (req, res) => {
   }
 });
 
-// === START SERVER ===
 app.listen(port, () => {
   console.log(`🌐 Archodome backend running at http://localhost:${port}`);
 });
