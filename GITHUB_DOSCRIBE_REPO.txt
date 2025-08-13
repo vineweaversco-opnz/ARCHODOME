@@ -1,0 +1,51 @@
+GITHUB DOSCRIBE REPO
+04/06/2025
+
+Repository Overview
+
+The project is a text‑heavy archival system called “DOSCRIBE,” intended to preserve documents and a constructed language (“Nova Lingua Astrae” or NLA). The root README/DOSCRIBE_USER_GUIDE.txt explains that the RetroArchive has two main components—document storage and the NLA lexicon—and that it is driven by five key programs (entry, reader, rubric, lexicon, and log) with AGP security for private domains
+
+Project Layout
+ARCHIVE/ – Contains document domains (e.g., DOMAIN_1__NEURAL_FORGE, DOMAIN_5__PROJECT_VINE), shared folders such as README and SYSTEM, and an NLA subdirectory for lexicon files.
+
+ARCHLOG/ – Stores architect log entries and encrypted logs.
+
+Python tools – Located in the repository root, each performing a dedicated function (entry, reading, lexicon management, encryption, etc.).
+
+Batch interface – DOSCRIBE.BAT is a menu-driven launcher for all tools, providing various submenus and ceremonial messages.
+
+The repository also includes numerous text READMEs documenting each tool in detail—examples include ARCHIVE_ENTRY_README.txt for the entry tool and NLA_LEXICON_README.txt for lexicon operations.
+
+Key Programs
+archive_entry.py
+Handles creation and management of “scroll” entries with metadata and AGP access. Its README highlights structured metadata, domain routing, and versioning features. The main() function presents a menu for creating, relocking, unlocking, and deleting scrolls.
+
+read_archive.py
+Reads archived scrolls, listing and filtering them. Features include tag/project filtering and AGP enforcement, as stated in its README. The interactive menu appears in main().
+
+arch_log.py
+A personal “Architect’s Log” with optional encryption using a Vigenère cipher. It logs AGP access attempts and supports plaintext or encrypted logs.
+
+nla_rubric.py / nla_lexicon.py / lexicon_reader.py
+Manage the constructed-language lexicon. The rubric defines legal syllables, the lexicon builder ratifies words, and the lexicon reader searches and displays entries. Their menus expose functions such as adding syllables, ratifying words, or listing morphology.
+
+agp_core.py
+Implements the Access Gate Protocol. It defines admin/user/guide passphrases and logs access attempts
+
+Important Concepts
+AGP (Access Gate Protocol) – Secures files with three passphrase tiers (admin, user, guide). Tools ask for a passphrase when a protected document is accessed or modified.
+
+Vigenère Encryption – Used in the architect log to encrypt entries (vigenere.py provides the cipher functions).
+
+Versioning and Metadata – Scrolls store metadata at the top of each file, and new versions are created when relocking or refiling.
+
+Things to Explore Next
+Archive Structure Creation – create_archive_structure.py illustrates the domain layout and shared folders.
+
+Batch Shell Usage – Review DOSCRIBE.BAT to see how each program is launched and the overall workflow.
+
+NLA Data – Explore the files in ARCHIVE/NLA/, including LEXICON_MASTER.json and the rubric JSON, to understand how words and syllables are stored.
+
+Security & Keys – key_vault.json stores encryption keys for log files and can be studied to understand how keys are referenced in arch_log.py.
+
+Overall, DOSCRIBE is a mixture of command-line scripts and extensive documentation meant to manage a “sacred” digital archive. New contributors should start by running the batch file to experience the interface, read each program’s README for usage notes, and familiarize themselves with the AGP security model and lexicon data format.
